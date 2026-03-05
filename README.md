@@ -14,13 +14,13 @@ Architecting a secure, scalable, and modular Azure environment for a retail migr
 
 This project is built using a Modular Design Pattern for maximum reusability:
 
-Networking Module: Defines the VNet, isolated Subnets, and Private Endpoint zones.
+- Networking Module: Defines the VNet, isolated Subnets, and Private Endpoint zones.
 
-Security Module: Manages Azure Key Vault with RBAC Authorization (removing legacy access policies).
+- Security Module: Manages Azure Key Vault with RBAC Authorization (removing legacy access policies).
 
-Data Module: Deploys a SQL Database with zero public exposure and RBAC management roles.
+- Data Module: Deploys a SQL Database with zero public exposure and RBAC management roles.
 
-Compute Module: Provisions Windows 2025 VMs with System-Assigned Managed Identities and Availability Sets.
+- Compute Module: Provisions Windows 2025 VMs with System-Assigned Managed Identities and Availability Sets.
 
 🔐 **Advanced Security & Reliability**
 

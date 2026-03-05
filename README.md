@@ -1,7 +1,9 @@
 ![Architecture Diagram](./RtL-architecture-v1.png)
 
 🛒 RtlCorp Enterprise Landing Zone
+
 📌 The Project Goal
+
 Architecting a secure, scalable, and modular Azure environment for a retail migration. This project demonstrates Zero-Trust networking, Identity-based Governance, and High Availability standards.
 
 🗺️ Architecture Diagram

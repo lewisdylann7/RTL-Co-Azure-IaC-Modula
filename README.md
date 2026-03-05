@@ -42,6 +42,8 @@ PowerShell
 $env:TF_VAR_admin_password = "YourSecurePassword123!"
 
 # 2. Initialize and Deploy
-terraform init
-terraform plan
-terraform apply -auto-approve
+  - terraform init
+
+  - terraform plan
+
+  - terraform apply -auto-approve

@@ -37,6 +37,9 @@ resource "azurerm_windows_virtual_machine" "vm" {
   availability_set_id = azurerm_availability_set.vm_avset.id
   admin_username      = "azureadmin"
   admin_password      = var.admin_password
+  identity {
+    type = "SystemAssigned"
+  }
   patch_mode           = "AutomaticByPlatform"
   hotpatching_enabled  = false
   bypass_platform_safety_checks_on_user_schedule_enabled = true

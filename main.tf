@@ -9,6 +9,7 @@ module "security" {
     location = var.location
     prefix = var.prefix
     admin_password = var.admin_password
+    vm_principal_id = module.compute.vm_principal_id
 }
 
 

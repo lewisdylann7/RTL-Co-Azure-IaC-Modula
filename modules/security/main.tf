@@ -16,11 +16,12 @@ resource "azurerm_key_vault" "vault" {
   resource_group_name = azurerm_resource_group.rg_sec.name
   sku_name = "standard"
   tenant_id = data.azurerm_client_config.current.tenant_id
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
-    secret_permissions = [ "Get","List","Set","Delete","Purge" ]
-  }
+  enable_rbac_authorization = true
+  #access_policy {
+   # tenant_id = data.azurerm_client_config.current.tenant_id
+    #object_id = data.azurerm_client_config.current.object_id
+    #secret_permissions = [ "Get","List","Set","Delete","Purge" ]
+  #}
 }
 
 resource "azurerm_role_assignment" "kv_role" {
@@ -37,3 +38,8 @@ resource "azurerm_key_vault_secret" "vm_password" {
 }
 
 
+resource "azurerm_role_assignment" "vm_vault_read" {
+  scope                = azurerm_key_vault.vault.id
+  role_definition_name = "Key Vault Secrets User"
+  principal_id         = var.vm_principal_id
+}

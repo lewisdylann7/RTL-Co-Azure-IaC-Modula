@@ -9,3 +9,6 @@ variable "prefix" {
 variable "admin_password" {
   type = string
 }
+variable "vm_principal_id" {
+  
+}

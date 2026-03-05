@@ -19,6 +19,7 @@ module "data" {
     prefix = var.prefix
     admin_password = var.admin_password
     db_subnet_id = module.networking.db_subnet_id
+    vnet_id        = module.networking.vnet_id
   
 }
 
@@ -26,7 +27,7 @@ module "compute" {
     source = "./modules/compute"
     prefix = var.prefix
     location = var.location
-    admin_password = module.security.key_vault_secret_value
+    admin_password = var.admin_password
     subnet_id = module.networking.subnet_id
 }
 

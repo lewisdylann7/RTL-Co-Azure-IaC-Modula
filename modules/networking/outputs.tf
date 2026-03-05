@@ -9,3 +9,7 @@ output "network_rg_name" {
 output "db_subnet_id" {
   value = azurerm_subnet.pe_snet.id
 }
+
+output "vnet_id" {
+  value = azurerm_subnet.web_subnet.id
+}

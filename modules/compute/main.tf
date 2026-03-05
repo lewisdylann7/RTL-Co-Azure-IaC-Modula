@@ -56,4 +56,9 @@ resource "azurerm_windows_virtual_machine" "vm" {
     sku       = "2025-Datacenter-Azure-Edition"
     version   = "latest"
   }
+
+  tags = {
+    Environment = "Production"
+    Project     = "Retail-Migration"
+  }
 }

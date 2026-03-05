@@ -24,15 +24,15 @@ This project is built using a Modular Design Pattern for maximum reusability:
 
 🔐 **Advanced Security & Reliability**
 
-Zero-Trust RBAC: Replaced legacy Access Policies with Azure RBAC roles (Secrets Officer, Secrets User).
+ - Zero-Trust RBAC: Replaced legacy Access Policies with Azure RBAC roles (Secrets Officer, Secrets User).
 
 
-Managed Identity: VMs authenticate to the Key Vault using Entra ID identities, eliminating the need for hardcoded service principal credentials.
+ - Managed Identity: VMs authenticate to the Key Vault using Entra ID identities, eliminating the need for hardcoded service    principal credentials.
 
 
-Private Link: Database communication is 100% internal to the Microsoft backbone.
+- Private Link: Database communication is 100% internal to the Microsoft backbone.
 
-High Availability: Compute resources are protected by Availability Sets to ensure hardware fault tolerance.
+ - High Availability: Compute resources are protected by Availability Sets to ensure hardware fault tolerance.
 
 
 🚀 **Deployment**

@@ -1,30 +1,49 @@
-# 🛒 RtlCorp Enterprise Landing Zone
-![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) 
-![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
+![Architecture Diagram](./RtL-architecture-v1.png)
 
-## 📌 The Project Goal
-Architecting a secure, scalable, and modular Azure environment for a retail migration. This project demonstrates **Zero-Trust networking** and **Confidential Computing** standards.
+🛒 **RtlCorp Enterprise Landing Zone**
 
-## 🗺️ Architecture Diagram
-![Architecture](./images/architecture-diagram.png)
+📌 The Project Goal
 
-## 🏗️ Modular Structure
-This project is built using a **Modular Design Pattern** to ensure separation of concerns:
-* **Networking Module**: Defines the VNet, Subnets, and Private Endpoint zones.
-* **Security Module**: Orchestrates the **Azure Key Vault** and secret lifecycle management.
-* **Data Module**: Deploys a SQL Database with `public_network_access_enabled = false`.
-* **Compute Module**: Provisions **DC-Series VMs** for hardware-encrypted data-in-use.
+Architecting a secure, scalable, and modular Azure environment for a retail migration. This project demonstrates Zero-Trust networking, Identity-based Governance, and High Availability standards.
 
-## 🔐 Security Features
-* **Private Link**: Database communication occurs entirely over the private Microsoft backbone.
-* **Hardware Isolation**: Intel SGX enclaves via `Standard_DC1s_v3` instances.
-* **Vaulted Secrets**: Credentials injected via Terraform Sensitive Variables + Key Vault.
+🗺️ **Architecture Diagram**
+(Includes Private Link, Managed Identity, and RBAC Role Assignments)
 
-## 🚀 Deployment
-```hcl
-# Set your secure password in environment variables
-$env:TF_VAR_admin_password = "SecurePassword123!"
 
-# Run the modular build
-terraform init
-terraform apply -auto-approve
+🏗️ **Modular Structure**
+
+This project is built using a Modular Design Pattern for maximum reusability:
+
+- Networking Module: Defines the VNet, isolated Subnets, and Private Endpoint zones.
+
+- Security Module: Manages Azure Key Vault with RBAC Authorization (removing legacy access policies).
+
+- Data Module: Deploys a SQL Database with zero public exposure and RBAC management roles.
+
+- Compute Module: Provisions Windows 2025 VMs with System-Assigned Managed Identities and Availability Sets.
+
+🔐 **Advanced Security & Reliability**
+
+ - Zero-Trust RBAC: Replaced legacy Access Policies with Azure RBAC roles (Secrets Officer, Secrets User).
+
+
+ - Managed Identity: VMs authenticate to the Key Vault using Entra ID identities, eliminating the need for hardcoded service    principal credentials.
+
+
+- Private Link: Database communication is 100% internal to the Microsoft backbone.
+
+ - High Availability: Compute resources are protected by Availability Sets to ensure hardware fault tolerance.
+
+
+🚀 **Deployment**
+
+PowerShell
+# 1. Set your secure password (injected into Key Vault via Terraform)
+$env:TF_VAR_admin_password = "YourSecurePassword123!"
+
+# 2. Initialize and Deploy
+  - terraform init
+
+  - terraform plan
+
+  - terraform apply -auto-approve

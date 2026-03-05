@@ -19,6 +19,14 @@ resource "azurerm_network_interface" "web_nic" {
   }
 }
 
+resource "azurerm_availability_set" "vm_avset" {
+  name                = "${var.prefix}-avset"
+  location            = azurerm_resource_group.rg_compute.location
+  resource_group_name = azurerm_resource_group.rg_compute.name
+  managed             = true
+  platform_fault_domain_count  = 2
+  platform_update_domain_count = 5
+}
 
 
 resource "azurerm_windows_virtual_machine" "vm" {
@@ -26,7 +34,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   resource_group_name = azurerm_resource_group.rg_compute.name
   location   = azurerm_resource_group.rg_compute.location
   size       = "Standard_DC1s_v3"
-  
+  availability_set_id = azurerm_availability_set.vm_avset.id
   admin_username      = "azureadmin"
   admin_password      = var.admin_password
   patch_mode           = "AutomaticByPlatform"

@@ -1,3 +1,7 @@
+data "azurerm_client_config" "current" {
+  
+}
+
 resource "azurerm_resource_group" "rg_data" {
   name     = "${var.prefix}-data-rg"
   location = var.location
@@ -33,4 +37,11 @@ resource "azurerm_private_endpoint" "sql_pe" {
     is_manual_connection           = false
     subresource_names              = ["sqlServer"]
   }
+}
+
+
+resource "azurerm_role_assignment" "sql_rbac" {
+  scope                = azurerm_mssql_server.sql_server.id
+  role_definition_name = "SQL Server Contributor"
+  principal_id         = data.azurerm_client_config.current.object_id
 }

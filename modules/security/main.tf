@@ -23,6 +23,12 @@ resource "azurerm_key_vault" "vault" {
   }
 }
 
+resource "azurerm_role_assignment" "kv_role" {
+  scope                = azurerm_key_vault.vault.id
+  role_definition_name = "Key Vault Secrets Officer"
+  principal_id         = data.azurerm_client_config.current.object_id
+}
+
 
 resource "azurerm_key_vault_secret" "vm_password" {
   name = "vm-admin-password"

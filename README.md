@@ -11,6 +11,7 @@ Architecting a secure, scalable, and modular Azure environment for a retail migr
 
 
 🏗️ **Modular Structure**
+
 This project is built using a Modular Design Pattern for maximum reusability:
 
 Networking Module: Defines the VNet, isolated Subnets, and Private Endpoint zones.
@@ -22,15 +23,20 @@ Data Module: Deploys a SQL Database with zero public exposure and RBAC managemen
 Compute Module: Provisions Windows 2025 VMs with System-Assigned Managed Identities and Availability Sets.
 
 🔐 **Advanced Security & Reliability**
+
 Zero-Trust RBAC: Replaced legacy Access Policies with Azure RBAC roles (Secrets Officer, Secrets User).
 
+
 Managed Identity: VMs authenticate to the Key Vault using Entra ID identities, eliminating the need for hardcoded service principal credentials.
+
 
 Private Link: Database communication is 100% internal to the Microsoft backbone.
 
 High Availability: Compute resources are protected by Availability Sets to ensure hardware fault tolerance.
 
-🚀 Deployment
+
+🚀 **Deployment**
+
 PowerShell
 # 1. Set your secure password (injected into Key Vault via Terraform)
 $env:TF_VAR_admin_password = "YourSecurePassword123!"

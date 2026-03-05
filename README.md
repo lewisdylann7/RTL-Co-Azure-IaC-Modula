@@ -1,6 +1,6 @@
 ![Architecture Diagram](./RtL-architecture-v1.png)
 
-🛒 RtlCorp Enterprise Landing Zone
+🛒 **RtlCorp Enterprise Landing Zone**
 
 📌 The Project Goal
 
